@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  href="../clock/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800;900&family=Roboto+Slab:wght@400;500&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,100;1,300;1,900&display=swap" rel="stylesheet">
+
+    <title>Digital Clock</title>
+</head>
+<body>
+
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+    
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    gap: 2.5rem;
+    width: 100%;
+    background: url("http://images.summitmedia-digital.com/spotph/images/2022/09/28/coffee-1-1-1664301131.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+    overflow: hidden;
+    width: 100%;
+   
+}
+
+
+h2{
+    font-size: 35px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #b9b52b;
+}
+
+
+.clock {
+    display: flex;
+    gap: 2.2rem;
+}
+
+.clock span{
+    width: 120px;
+    height: 100px;
+    background-color: rgb(143, 24, 64);
+    opacity: .8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: 400;
+    text-shadow: 2px 2px 4px rgb(0,0 ,0,0.3);
+    -webkit-box-shadow: -1px 1px 19px -1px rgba(0,0,0,0.67); 
+box-shadow: -1px 1px 19px -1px rgba(0,0,0,0.67);
+border-radius: 2px;    
+    
+    
+}
+
+
+.clock .text{
+    font-size: 10px;
+    height: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2.2px;
+    background: darkblue;
+    opacity: .8;
+
+}
+
+
+#ampm{
+    position: absolute;
+    bottom: 280px;
+    width: 60px;
+    height: 30px;
+    font-size: 20px;
+    background-color: green;
+}
+
+ 
+
+@media   only screen and  (max-width: 460px) {
+  .clock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  #ampm{
+    position: relative;
+    top: auto;
+    left: 100px;
+    background-color: #887e09;
+   
+  }
+}
+
+    </style>
+    
+
+<h2>Digital Clock</h2>
+
+<div class="clock">
+    <div>
+        <span id="hour">00</span>
+        <span class="text">Hours</span>
+    </div>
+
+    <div>
+        <span id="minutes">00</span>
+        <span class="text">Minutes</span>
+    </div>
+
+    <div>
+        <span id="second">00</span>
+        <span class="text">Seconds</span>
+    </div>
+
+    <div>
+        <span id="ampm">AM</span>
+       
+    </div>
+</div>
+
+<script>const hourEl = document.getElementById("hour");
+const minuteEl = document.getElementById("minutes");
+const secondEl = document.getElementById("second");
+const ampmEl = document.getElementById("ampm");
+
+function updateClock(){
+   
+    let h = new Date().getHours()
+    let m = new Date().getMinutes()
+    let s = new Date().getSeconds()
+    let ampm = "AM"
+
+    if (h > 12){
+        h = h - 12
+        ampm = "PM"
+    }
+    
+   h = h < 10 ? "0" + h : h;
+   m = m < 10 ? "0" + m : m;
+   s = s < 10 ? "0" + s : s;
+
+
+    hourEl.innerText = h;
+    minuteEl.innerText = m
+    secondEl.innerText = s
+    ampmEl.innerText = ampm;
+
+    setTimeout(() =>{
+         updateClock()
+    }, 1000)
+
+};
+
+updateClock ()</script>
+</body>
+</html>
